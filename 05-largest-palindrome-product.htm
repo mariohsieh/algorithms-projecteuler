@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Largest Palindrome Product - 05 - Project Euler</title>
+</head>
+<body>
+	<script>
+		/* A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+			Find the largest palindrome made from the product of two 3-digit numbers.
+		*/
+
+		function largestPalindromeProduct() {
+
+			palindromeArr = [];
+
+			for (var i = 99;i>10;i--) {
+				for (var j = 99;j>10;j--) {
+					var product = i * j;
+					checkPalindrome(product);
+				}
+			}
+
+			// sort the array of palindromes
+			//palindromeArr.sort(function(a,b) {return b-a;});
+			var largest;
+
+			//for (i=0;i<palindromeArr.length;i++) {
+				//if (!largest || 
+			//}
+
+
+			return palindromeArr;
+		}
+
+		// check to see if product is a palindrome
+		function checkPalindrome(product) {
+			product = product.toString();
+			var reverseProduct = "";
+
+			for (var k=product.length-1;k>=0;k--) {
+				reverseProduct += product[k];
+			}
+
+			//console.log(product);
+			//console.log(reverseProduct);
+
+			for (var k=0;k<product.length;k++) {
+				if (product[k] != reverseProduct[k])
+					break;
+				if (k == product.length-1) {
+					palindromeArr.push(parseInt(product));
+					//console.log(product);
+				}
+			}
+
+			//console.log(reverseProduct);
+
+			//return product;
+		}
+
+		console.log(largestPalindromeProduct());
+	</script>
+</body>
+</html>
