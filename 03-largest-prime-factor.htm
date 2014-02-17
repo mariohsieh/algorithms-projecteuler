@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Largest Prime Factor - 03 - Project Euler</title>
+</head>
+<body>
+	<script>
+		/* The prime factors of 13195 are 5, 7, 13 and 29.  
+			What is the largest prime factor of the number 600851475143?
+		*/
+
+		function largestPrimeFactor(num) {
+			var factors = [];	// declare empty array for prime factors
+
+			findAllFactors(num, factors);	// call recursion function to find prime factors
+
+			return factors[factors.length-1];	// return last/largest element of prime factors array
+		}
+
+		// recursion function to find all the 
+		function findAllFactors(givenNum, factorArr) {
+			var i = 2;
+			while (i < givenNum) {
+				if (givenNum%i == 0) {	// check to see if a prime factor exists
+					//console.log(i);
+					//console.log(givenNum);
+					//console.log(factorArr);
+					factorArr.push(i);			// if so, add to an array of all prime factors
+					// divide the given number by the prime factor and recurse through the function
+					return findAllFactors(givenNum/i, factorArr);	
+				}
+				i++;
+			}
+			factorArr.push(i);	// add the largest prime factor to the array
+			console.log(factorArr);
+			return factorArr;
+		}
+
+		number = 600851475143;	//	71 839 1471 6857
+		//number = 13195;	// 5 7 13 29
+		//number = 100;	// 3 3 5
+		console.log(largestPrimeFactor(number));
+	</script>
+</body>
+</html>
